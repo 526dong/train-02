@@ -37,6 +37,15 @@ public class QuickSort {
             quickSort(arr, pivot + 1, high); // 对高位子序列递归排序
         }
     }
+
+    public static void myQuick(int[] arr, int low, int high){
+        if (low < high) {
+            int div = partition(arr, low, high);
+            quickSort(arr, low, div - 1);
+            quickSort(arr, div + 1, high);
+        }
+    }
+
     /**
      * 使枢轴记录到达正确的位置，并返回其所在的位置
      */
@@ -54,6 +63,24 @@ public class QuickSort {
         }
         arr[low] = pivot; // 将枢轴放在正确的排序位置
         return low; // 返回枢轴元素所在的位置
+    }
+
+    private static int myPart(int[] arr, int low, int high) {
+        int div = arr[low];
+        //从低位到高位遍历
+        while (low < high) {
+            //在高位中找到比枢轴大的值，符合要求，继续寻找
+            while (low < high && div <= arr[high]) {
+                high--;
+            }
+            arr[low] = arr[low];
+            while (low < high && div >= arr[low]) {
+                low++;
+            }
+            arr[high] = arr[low];
+        }
+        arr[low] = div;
+        return low;
     }
 
 }

@@ -2,102 +2,116 @@ package dong.sort;
 
 /**
  * @author Created by ${xzd} on 2018/1/16.
- * @Description å½’å¹¶æŽ’åº-åˆ†æ²»ç®—æ³•
- * å‡è®¾åˆå§‹åºåˆ—å«æœ‰nä¸ªå…ƒç´ ï¼Œæˆ‘ä»¬å¯ä»¥æŠŠå®ƒçœ‹æˆæ˜¯nä¸ªæœ‰åºçš„å­åºåˆ—ï¼Œæ¯ä¸ªå­åºåˆ—çš„é•¿åº¦ä¸º1ï¼Œç„¶åŽä¸¤ä¸¤åˆå¹¶ï¼Œå¾—åˆ°n/2ä¸ªé•¿åº¦ä¸º2çš„æœ‰åºå­åºåˆ—ï¼Œå†ä¸¤ä¸¤å½’å¹¶...
- * å¦‚æ­¤é‡å¤ï¼Œç›´è‡³å¾—åˆ°ä¸€ä¸ªé•¿åº¦ä¸ºnçš„æœ‰åºåºåˆ—ä½ç½®ï¼Œè¿™ç§æŽ’åºæ–¹æ³•ç§°ä¸º2è·¯å½’å¹¶æŽ’åº
- * æ—¶é—´å¤æ‚åº¦ï¼šO(nlogn)
- * æ¬¡ç®—æ³•æ˜¯ç»å…¸çš„åˆ†æ²»ç­–ç•¥ï¼Œå®ƒå°†é—®é¢˜åˆ†æˆä¸€äº›å°çš„é—®é¢˜ç„¶åŽé€’å½’æ±‚è§£ï¼Œè€Œæ²»çš„é˜¶æ®µåˆ™å°†åˆ†çš„é˜¶æ®µè§£å¾—çš„å„ç­”æ¡ˆä¿®è¡¥åœ¨ä¸€èµ·ï¼Œåˆ†è€Œæ²»ä¹‹æ˜¯é€’å½’éžå¸¸æœ‰æ•ˆçš„ç”¨æ³•ã€‚
- * å½’å¹¶æŽ’åºæ˜¯ä¸€ç§æ¯”è¾ƒå ç”¨å†…å­˜ï¼Œä½†å´æ•ˆçŽ‡é«˜ä¸”ç¨³å®šçš„ç®—æ³•ã€‚
+ * @Description ¹é²¢ÅÅÐò-·ÖÖÎËã·¨
+ * ¼ÙÉè³õÊ¼ÐòÁÐº¬ÓÐn¸öÔªËØ£¬ÎÒÃÇ¿ÉÒÔ°ÑËü¿´³ÉÊÇn¸öÓÐÐòµÄ×ÓÐòÁÐ£¬Ã¿¸ö×ÓÐòÁÐµÄ³¤¶ÈÎª1£¬È»ºóÁ½Á½ºÏ²¢£¬µÃµ½n/2¸ö³¤¶ÈÎª2µÄÓÐÐò×ÓÐòÁÐ£¬ÔÙÁ½Á½¹é²¢...
+ * Èç´ËÖØ¸´£¬Ö±ÖÁµÃµ½Ò»¸ö³¤¶ÈÎªnµÄÓÐÐòÐòÁÐÎ»ÖÃ£¬ÕâÖÖÅÅÐò·½·¨³ÆÎª2Â·¹é²¢ÅÅÐò
+ * Ê±¼ä¸´ÔÓ¶È£ºO(nlogn)
+ * ´ËËã·¨ÊÇ¾­µäµÄ·ÖÖÎ²ßÂÔ£¬Ëü½«ÎÊÌâ·Ö³ÉÒ»Ð©Ð¡µÄÎÊÌâÈ»ºóµÝ¹éÇó½â£¬¶øÖÎµÄ½×¶ÎÔò½«·ÖµÄ½×¶Î½âµÃµÄ¸÷´ð°¸ÐÞ²¹ÔÚÒ»Æð£¬·Ö¶øÖÎÖ®ÊÇµÝ¹é·Ç³£ÓÐÐ§µÄÓÃ·¨¡£
+ * ¹é²¢ÅÅÐòÊÇÒ»ÖÖ±È½ÏÕ¼ÓÃÄÚ´æ£¬µ«È´Ð§ÂÊ¸ßÇÒÎÈ¶¨µÄËã·¨¡£
  */
 public class MergeSort {
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         int[] arr = {50, 10, 90, 30, 70, 40, 80, 60, 20};
-        System.out.println("æŽ’åºä¹‹å‰ï¼š");
+        System.out.println("ÅÅÐòÖ®Ç°£º");
         for (int i = 0; i < arr.length; i++) {
             System.out.print(arr[i] + " ");
         }
-        // å½’å¹¶æŽ’åº
+        // ¹é²¢ÅÅÐò
         mergeSort(arr);
         System.out.println();
-        System.out.println("æŽ’åºä¹‹åŽï¼š");
+        System.out.println("ÅÅÐòÖ®ºó£º");
         for (int i = 0; i < arr.length; i++) {
             System.out.print(arr[i] + " ");
         }
     }
 
-    public static void myMergeSort(int[] arr){
-        int[] tmepArr = new int[arr.length];
-
-    }
-
-    /**
-     * å½’å¹¶æŽ’åº
-     */
+    *//**
+     * ¹é²¢ÅÅÐò
+     *//*
     public static void mergeSort(int[] arr) {
+        //ÖØÐÂ¸ã³öÀ´Ò»¸öÍ¬Ñù´óÐ¡µÄÊý×éµ«ÊÇ²»°üº¬Êý¾Ý
         int[] tmpArr = new int[arr.length];
         mergeSort(arr, tmpArr, 0, arr.length - 1);
     }
 
-    private static void mySort(int[] arr, int[] tempArr, int low, int high){
-        if (low < high) {
-            //æ‹†åˆ†ä¸ºéƒ¨åˆ†
-            int middle = (low+high) / 2;
-            //é€’å½’å‰åŠéƒ¨åˆ†è¿›è¡Œå†æ‹†åˆ†
-            mySort(arr, tempArr, low, middle);
-            //é€’å½’åŽåŠéƒ¨åˆ†è¿›è¡Œå†æ‹†åˆ†
-            mySort(arr, tempArr, middle+1, high);
-            myMerge(arr, tempArr, low, middle+1, high);
-        }
-    }
-
+    *//**
+     *
+     * @param arr
+     * @param tmpArr
+     * @param low µÍÎ»
+     * @param high ¸ßÎ»
+     *//*
     private static void mergeSort(int[] arr, int[] tmpArr, int low, int high) {
         if (low < high) {
-            // å°†æ•°ç»„arråˆ†ä¸ºarr[0..mid]å’Œarr[mid+1..high]
+            //½«Êý×éÒ»·ÖÎª2£¬ÄÃµ½Êý×éÖÐÖµ
             int middle = (low + high) / 2;
-            // é€’å½’å°†arr[low..mid]å½’å¹¶ä¸ºæœ‰åºçš„tmpArr[low..mid]
+            //µÝ¹é×ÔÎÒµ÷ÓÃ-Ç°°ë²¿·Ö
             mergeSort(arr, tmpArr, low, middle);
-            // é€’å½’å°†arr[mid+1..high]å½’å¹¶ä¸ºæœ‰åºçš„tmpArr[mid+1..high]
+            //µÝ¹é×ÔÎÒµ÷ÓÃ-ºó°ë²¿·Ö£¬ÓÉÓÚintÀàÐÍÊÇÏòÏÂÈ¡Õû£¬Òò´ËÒªmiddle+1
             mergeSort(arr, tmpArr, middle + 1, high);
-            // å°†arr[low..mid]å’Œarr[mid+1..high]å½’å¹¶åˆ°tmpArr[low..high]
-            merge(arr, tmpArr, low, middle + 1, high);
+            //½øÐÐ¹é²¢
+            myMerge(arr, tmpArr, low, middle + 1, high);
         }
+        *//*if (low < high) {
+            // ½«Êý×éarr·ÖÎªarr[0..mid]ºÍarr[mid+1..high]
+            int middle = (low + high) / 2;
+            // µÝ¹é½«arr[low..mid]¹é²¢ÎªÓÐÐòµÄtmpArr[low..mid]
+            mergeSort(arr, tmpArr, low, middle);
+            // µÝ¹é½«arr[mid+1..high]¹é²¢ÎªÓÐÐòµÄtmpArr[mid+1..high]
+            mergeSort(arr, tmpArr, middle + 1, high);
+            // ½«arr[low..mid]ºÍarr[mid+1..high]¹é²¢µ½tmpArr[low..high]
+            merge(arr, tmpArr, low, middle + 1, high);
+        }*//*
     }
 
-    private static void myMerge(int[] arr, int[] tempArr, int lowPos, int highPos, int highEnd){
-        int lowEnd = highPos - 1;
-        int tempPos = lowPos;
-        int numElements = highEnd - lowPos + 1;
+    *//**
+     * ºÏ²¢
+     * @param arr
+     * @param tempArr
+     * @param low µÍÎ»
+     * @param nextMiddle ÖÐÎ»
+     * @param high ¸ßÎ»
+     *//*
+    private static void myMerge(int[] arr, int[] tempArr, int low, int nextMiddle, int high){
+        int preMiddle = nextMiddle - 1;
+        int tempPos = low;
+        int elementNumbers = high - low + 1;
 
-        while (lowPos <= lowEnd && highPos <= highEnd) {
-            if (arr[lowPos] <= arr[highPos]) {
-                tempArr[tempPos++] = arr[lowPos++];
+        // ½«arrÖÐµÄ¼ÇÂ¼ÓÉÐ¡µ½´ó¹é²¢ÈëtempArr
+        while (low <= preMiddle && nextMiddle <= high) {
+            if (arr[low] <= arr[nextMiddle]) {
+                // ´ÓµÚÒ»¸öÔªËØ¿ªÊ¼copy
+                tempArr[tempPos++] = arr[low++];
             } else {
-                tempArr[tempPos++] = arr[highPos++];
+                // ´ÓÖÐ¼äÖµµÄÏÂÒ»¸ö¿ªÊ¼copy
+                tempArr[tempPos++] = arr[nextMiddle++];
             }
         }
 
-        // å°†å‰©ä½™çš„arr[low..mid]å¤åˆ¶åˆ°tmpArr
-        while (lowPos <= lowEnd){
-            tempArr[tempPos++] = arr[lowPos++];
+        if (low <= preMiddle) {
+            tempArr[tempPos++] = arr[low++];
         }
-        // å°†å‰©ä½™çš„arr[mid+1..high]å¤åˆ¶åˆ°tmpArr
-        while (highPos <= highEnd){
-            tempArr[tempPos++] = arr[highPos++];
+        if (nextMiddle <= high) {
+            tempArr[tempPos++] = arr[nextMiddle++];
         }
+
         // Copy tmpArr back
-        for (int i = 0; i < numElements; i++, highEnd--){
-            arr[highEnd] = tempArr[highEnd];
+        for (int i = 0; i < elementNumbers; i++, high--){
+            arr[high] = tempArr[high];
         }
+
+        //arr = Arrays.copyOf(tempArr, elementNumbers);
     }
 
-    // å°†æœ‰åºçš„arr[low..mid]å’Œarr[mid+1..high]å½’å¹¶ä¸ºæœ‰åºçš„tmpArr[low..high]
+
+    // ½«ÓÐÐòµÄarr[low..mid]ºÍarr[mid+1..high]¹é²¢ÎªÓÐÐòµÄtmpArr[low..high]
     private static void merge(int[] arr, int[] tmpArr, int lowPos, int highPos, int highEnd) {
         int lowEnd = highPos - 1;
         int tmpPos = lowPos;
         int numElements = highEnd - lowPos + 1;
 
-        // å°†arrä¸­çš„è®°å½•ç”±å°åˆ°å¤§å½’å¹¶å…¥tmpArr
+        // ½«arrÖÐµÄ¼ÇÂ¼ÓÉÐ¡µ½´ó¹é²¢ÈëtmpArr
         while (lowPos <= lowEnd && highPos <= highEnd){
             if (arr[lowPos] <= arr[highPos]){
                 tmpArr[tmpPos++] = arr[lowPos++];
@@ -106,17 +120,89 @@ public class MergeSort {
             }
         }
 
-        // å°†å‰©ä½™çš„arr[low..mid]å¤åˆ¶åˆ°tmpArr
+        // ½«Ê£ÓàµÄarr[low..mid]¸´ÖÆµ½tmpArr
         while (lowPos <= lowEnd){
             tmpArr[tmpPos++] = arr[lowPos++];
         }
-        // å°†å‰©ä½™çš„arr[mid+1..high]å¤åˆ¶åˆ°tmpArr
+        // ½«Ê£ÓàµÄarr[mid+1..high]¸´ÖÆµ½tmpArr
         while (highPos <= highEnd){
             tmpArr[tmpPos++] = arr[highPos++];
         }
         // Copy tmpArr back
         for (int i = 0; i < numElements; i++, highEnd--){
             arr[highEnd] = tmpArr[highEnd];
+        }
+    }*/
+
+
+    /**
+     * ¹é²¢ÅÅÐò-Ö÷ÒªÊÇÔËÓÃ·ÖÖÎË¼Ïë£¬½«Ò»¸ö´óµÄÐòÁÐ·Ö¸î³É¶à¸öÐ¡µÄÐòÁÐ½øÐÐÅÅÐò£¬È»ºóÔÙ½øÐÐ¹é²¢½á¹û
+     * ±¾ÎÄÊ¹ÓÃµÄÊÇ2Â·¹é²¢ÅÅÐò¶Ôµ±Ç°ÐòÁÐ½øÐÐ¹é²¢ÅÅÐò
+     */
+
+    /**
+     * ½øÈëµÝ¹é
+     */
+    public static void sort(int[] arr){
+        int[] tempArr = new int[arr.length];
+        diGuiSort(arr, tempArr, 0, arr.length-1);
+    }
+
+    /**
+     *
+     * @param arr ÊäÈëÊý×é
+     * @param tempArr ¸³ÖµÊý×é
+     * @param low µÍÎ»
+     * @param high ¸ßÎ»
+     */
+    public static void diGuiSort(int[] arr, int[] tempArr, int low, int high){
+        /**
+         * Ò»¡¢Í¨¹ý¶þ·Ö·¨½«ÐòÁÐ²»¶ÏµÄ½øÐÐ¶þ·Ö·Ö¸î
+         */
+        //intÊÇÏòÏÂÈ¡Õû
+        int middle = (low + high) / 2;
+        //Ç°°ë²¿·Ö½øÐÐµÝ¹éµ÷ÓÃ
+        diGuiSort(arr, tempArr, low, middle);
+        //ºó°ë²¿·Ö½øÐÐµÝ¹éµ÷ÓÃ
+        diGuiSort(arr, tempArr, middle+1, high);
+        //¶þ¡¢½øÐÐ¹é²¢
+        mergeSort(arr, tempArr, low, middle+1, high);
+    }
+
+    /**
+     * ½øÐÐÊý¾Ý¹é²¢
+     * @param arr Êä³öÊý×é
+     * @param tempArr ÖÐ¼äÊý×é£¬ÓÃÓÚ½ÓÊÜÊý¾Ý
+     * @param low µÍÎ»
+     * @param middle ÖÐÎ»
+     * @param high ¸ßÎ»
+     */
+    public static void mergeSort(int[] arr, int[] tempArr, int low, int middle, int high) {
+        //¶¨ÒåµÍÖÐÎ»
+        int preMiddle = middle - 1;
+        //¶¨ÒåÖÐ¼äÖµ£¬ÓÃÓÚ²»¶ÏµÄ¸üÐÂ±ä»¯
+        int tempPos = low;
+        //µ±Ç°½ÚµãÊýÁ¿
+        int eleNumbers = high - low + 1;
+        while (low <= preMiddle && middle <= high) {
+            //Èç¹ûºó±ßµÄÖµ´óÓÚÇ°±ßµÄÖµ
+            if (arr[low] <= arr[middle]) {
+                tempArr[tempPos++] = arr[low++];
+            } else {
+                tempArr[tempPos++] = arr[middle++];
+            }
+        }
+        //µÍÎ»¸³Öµ
+        while (low <= preMiddle) {
+            tempArr[tempPos++] = arr[low++];
+        }
+        //¸ßÎ»¸³Öµ
+        while (middle <= high) {
+            tempArr[tempPos++] = arr[middle++];
+        }
+        //ÖØÐÂÏòÊý×éÀï¸³Öµ
+        for (int i = 0; i < eleNumbers; i++, high--) {
+            arr[high] = tempArr[high];
         }
     }
 }

@@ -1,5 +1,7 @@
 package dong.async.concurrent;
 
+import java.util.StringTokenizer;
+
 /**
  * @author Created by ${xzd} on 2018/1/13.
  * @Description ThreadLocal不是一个线程，而是线程的一个本地化对象。线程的本地变量
@@ -37,6 +39,10 @@ public class ThreadLocalDemo {
                 }
             }, "Thread-" + i);
         }
+
+        String str = "";
+
+        StringTokenizer st = new StringTokenizer(str, ",");
 
         for (Thread thread : threads) {
             thread.start();

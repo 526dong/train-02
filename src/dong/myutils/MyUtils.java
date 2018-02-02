@@ -13,12 +13,84 @@ import java.util.regex.Pattern;
 
 /**
  * @author Created by xzd on 2017/11/27.
- * @Description 要养成一个好的习惯，来做单元测试，是自己的更加的强壮和健壮
+ * @Description 要养成一个好的习惯，来做单元测试，使自己的方法更加强壮和健壮
  */
 public class MyUtils {
     public static void main(String[] args) {
         String code = replaceCode("\"dsfs\"");
         System.out.println(code);
+    }
+
+    public void testThread(){
+        //多线程并行有多少种模式
+        //Future模式
+    }
+
+    public void test(){
+
+    }
+
+
+    @Test
+    public void testUUid(){
+        System.out.println(new Random().nextFloat()*90);
+        System.out.println(new Random().nextFloat()*90);
+        System.out.println(new Random().nextFloat()*90);
+        System.out.println(new Random().nextFloat()*90);
+        System.out.println(new Random().nextFloat()*90);
+        System.out.println(new Random().nextFloat()*90);
+    }
+
+    @Test
+    public void testArrayCopy(){
+        int[] arr = {1, 3, 4, 5, 7};
+        int[] ints = Arrays.copyOf(arr, arr.length);
+        for (int i = 0; i < ints.length; i++) {
+            System.out.println(ints[i]);
+        }
+    }
+
+    @Test
+    public void testFastFail(){
+        List<Integer> list = new ArrayList<>(20);
+
+        for (int i = 0; i < 20; i++) {
+            list.add(i);
+        }
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    for (int i = 0; i < list.size(); i++) {
+                        if (i/2 == 0) {
+                            Thread.sleep(1000);
+                        }
+                        System.out.println(list.get(i));
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                list.remove(10);
+            }
+        }).start();
+
+
+
+        Thread t1 = new Thread("dong-train01");
+        Thread t2 = new Thread("dong-train02");
+        t1.start();
+
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(list.get(i));
+        }
+
     }
 
     @Test

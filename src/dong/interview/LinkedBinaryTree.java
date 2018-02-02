@@ -121,8 +121,34 @@ public class LinkedBinaryTree {
     }
 
     /**
+     * 先序遍历-根节点/左节点/右节点
+     * 利用栈的特性来进行伪递归实现二叉树的遍历
+     * @param node
+     */
+    public void myPre(Node node){
+        Stack<Node> stack = new Stack<>();
+        //node not null
+        if (node != null) {
+            //根节点入栈
+            stack.push(node);
+            //栈不为空
+            while (!stack.isEmpty()) {
+                //先序遍历-根节点先出栈
+                node = stack.pop();
+                System.out.println(node.data);
+                //注意栈是后进先出，所以要注意顺序，左节点应该后入栈然后先出栈，右节点应该先入栈然后后出栈
+                if (node.rightChild != null) {
+                    stack.push(node.rightChild);
+                }
+                if (node.leftChild != null) {
+                    stack.push(node.leftChild);
+                }
+            }
+        }
+    }
+
+    /**
      * 中序遍历（非递归实现）
-     *
      * @param node
      */
     public void inOrderTraverseNoRecursion(Node node) {
@@ -139,6 +165,42 @@ public class LinkedBinaryTree {
         }
     }
 
+    /**
+     * 中序遍历-左/中/右
+     * @param node
+     */
+    public void myMiddle(Node node){
+        Stack<Node> stack = new Stack<>();
+        while (node != null || !stack.isEmpty()) {
+            if (node != null) {
+                stack.push(node);
+                node = node.leftChild;
+            } else {
+                //出栈，并且删除栈顶元素
+                node = stack.pop();
+                System.out.println("" + node.data);
+                node = node.rightChild;
+            }
+        }
+    }
+
+    /**
+     * 中序遍历的主要思想是左中右，所以要找到
+     * @param node
+     */
+    public void myM(Node node){
+        Stack<Node> stack = new Stack<>();
+        if (node != null || !stack.isEmpty()) {
+            if (node != null) {
+                stack.push(node);
+                node = node.leftChild;
+            } else {
+                node = stack.pop();
+                System.out.println(" " + node.data);
+                node = node.rightChild;
+            }
+        }
+    }
 
     public void after(Node node){
         Stack<Node> stack = new Stack<>();
@@ -233,8 +295,8 @@ public class LinkedBinaryTree {
         bTree.inOrderTraverse(bTree.root); // 中序遍历（递归）
         bTree.postOrderTraverse(bTree.root); // 后序遍历（递归）*/
         //bTree.preOrderTraverseNoRecursion(bTree.root); // 前序遍历（非递归）
-        //bTree.inOrderTraverseNoRecursion(bTree.root); // 中序遍历（非递归）
-           bTree.postOrderTraverseNoRecursion(bTree.root); // 后序遍历（非递归）
+        bTree.inOrderTraverseNoRecursion(bTree.root); // 中序遍历（非递归）
+        //bTree.postOrderTraverseNoRecursion(bTree.root); // 后序遍历（非递归）
         //bTree.levelOrderTraverse(bTree.root); // 层序遍历（非递归）
     }
 
